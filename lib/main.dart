@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/question.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
   var questionIndex = 0;
   void answersQuestion() {
-    print(questionIndex);
-    questionIndex = questionIndex + 1;
-    print('cliquei aqui');
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
     print(questionIndex);
   }
 
@@ -22,7 +31,7 @@ class MyApp extends StatelessWidget {
           title: Text('Navegação '),
         ),
         body: Column(children: [
-          Text(questions[0]),
+          Question(questions[questionIndex]),
           ElevatedButton(
             onPressed: answersQuestion,
             child: Text('Botao'),
