@@ -25,7 +25,20 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget build(BuildContext context) {
-    var questions = ['Primeira questão', 'Segunda questão'];
+    var questions = [
+      {
+        'statement': 'Qual o seu nome?',
+        'answers': ['Gabriel', 'Fernando', 'Marcos', 'Leoni']
+      },
+      {
+        'statement': 'Qual a sua idade?',
+        'answers': ['18', '19', '20', '21']
+      },
+      {
+        'statement': 'Terceira pergunta?',
+        'answers': ['Resposta 1', 'Resposta 2', 'Resposta 3', 'Resposta 4']
+      }
+    ];
 
     return MaterialApp(
       home: Scaffold(
@@ -33,10 +46,10 @@ class _MyAppState extends State<MyApp> {
           title: Text('Navegação '),
         ),
         body: Column(children: [
-          Question(questions[questionIndex]),
-          Answer(_answersQuestion),
-          Answer(_answersQuestion),
-          Answer(_answersQuestion)
+          Question(questions[questionIndex]['statement']),
+          ...(questions[questionIndex]['answers'] as List<String>).map((ans) {
+            return Answer(_answersQuestion, ans);
+          })
         ]),
       ),
     );

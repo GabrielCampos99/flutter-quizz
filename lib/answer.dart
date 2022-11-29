@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
   final VoidCallback handleSelect;
-  Answer(this.handleSelect);
+  final String awnswerText;
+  Answer(this.handleSelect, this.awnswerText);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,7 +12,7 @@ class Answer extends StatelessWidget {
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(Colors.blue)),
         onPressed: handleSelect,
-        child: Text('Mudou'),
+        child: Text(awnswerText),
       ),
     );
   }
